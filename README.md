@@ -15,16 +15,16 @@ Avalehele minnes on võimalik kas uus kasutaja luua või olemasolevaga sisse log
 ## Wireframe'id
 
 * Login vaade
-![Login vaade](wireframes/login.PNG)
+![Login vaade](wireframes/login.jpg)
 
 * Registreerimise vaade
-![Registreerimine](wireframes/register.PNG)
+![Registreerimine](wireframes/register.jpg)
 
 * Avaleht peale sisselogimist
-![Avaleht](wireframes/main.PNG)
+![Avaleht](wireframes/main.jpg)
 
 * Vestlusaken
-![Vestlus](wireframes/chat.PNG)
+![Vestlus](wireframes/chat.jpg)
 
 ## Kasutatud tehnoloogiad
 
