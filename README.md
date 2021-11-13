@@ -14,16 +14,25 @@ Avalehele minnes on võimalik kas uus kasutaja luua või olemasolevaga sisse log
 
 ## Wireframe'id
 
-* Avalehe vaade
-![Avaleht](wireframes/avaleht.PNG)
-
-* Vaade pärast sisselogimist ning avatud chatist
+* Login vaade
 ![Login vaade](wireframes/login.PNG)
+
+* Registreerimise vaade
+![Registreerimine](wireframes/register.PNG)
+
+* Avaleht peale sisselogimist
+![Avaleht](wireframes/main.PNG)
+
+* Vestlusaken
+![Vestlus](wireframes/chat.PNG)
 
 ## Kasutatud tehnoloogiad
 
+* Docker 19.03.8
 * React 17.0.2
 * NodeJS 16.13.0
+* ExpressJS 4.17.1
+* MongoDB 5.0
 * HTML5
 * CSS3
 
