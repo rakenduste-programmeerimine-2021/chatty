@@ -38,4 +38,10 @@ Avalehele minnes on võimalik kas uus kasutaja luua või olemasolevaga sisse log
 
 ## Paigaldusjuhis (kuidas kasutada)
 
-TBD
+1. Sobivas asukohas olles lae projekt alla
+```git clone https://github.com/rakenduste-programmeerimine-2021/chatty.git```
+2. Liigu **dev** kausta
+```cd chatty/dev```
+3. Käivita Dockeri konteiner
+```docker-compose up```
+Front-end on kättesaadav port 3000 pealt, back-end port 8081 pealt - ehk lokaalselt avalehele pääsemiseks http://localhost:3000/
