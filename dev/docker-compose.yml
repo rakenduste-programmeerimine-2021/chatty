@@ -1,0 +1,36 @@
+version: '3.4'
+
+services: 
+  chatty:
+    build:
+      context: '../chatty'
+    ports: 
+      - '3000:3000'
+    volumes: 
+      - '../chatty:/home/node/app:delegated'
+    command: 'run start'
+    container_name: 'chatty'
+
+  mongo_db: 
+    image: mongo:5.0.2
+    ports: 
+      - '27017:27017'
+    environment: 
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+    container_name: 'mongo_db'
+
+  backend:
+    depends_on: 
+      - mongo_db
+    build:
+      context: '../backend'
+    ports: 
+      - '8081:3000'
+      - '9000:9000'
+    environment: 
+      MONGODB_URI: mongodb://root:root@mongo_db/chatty?authSource=admin
+    volumes: 
+      - '../backend:/home/node/app:delegated'
+    command: 'run dev'
+    container_name: 'backend'
