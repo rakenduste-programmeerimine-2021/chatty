@@ -5,6 +5,28 @@ import { Link, useHistory } from 'react-router-dom';
 function Register() {
 
     const history = useHistory();
+    const storageToken = sessionStorage.getItem('token');
+    const tokenData = {
+        token: storageToken
+    }
+
+    try {
+        fetch('http://localhost:8081/api/auth/verify', {
+            method: 'POST',
+            body: JSON.stringify(tokenData),
+            headers: { 'Content-Type' : 'application/json' }
+        }).then(
+            response => response.json())
+        .then(
+            data => {
+                if(data.isValid !== undefined) {
+                    history.push("/home");
+                }
+            }
+        )
+    } catch (error) {
+        alert(error);
+    }
 
     const onFinish = async (e) => {
         const newUser = {

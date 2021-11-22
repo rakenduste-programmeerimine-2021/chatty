@@ -1,11 +1,9 @@
 import { Layout, Form, Input, Button } from 'antd';
 import { Link, useHistory } from "react-router-dom";
-import { useState } from 'react';
 import "./LoginForm.css";
 
 function LoginForm(props) {
 
-    const [token, setToken] = useState();
     const history = useHistory();
 
     const onFinish = (values) => {
@@ -21,7 +19,7 @@ function LoginForm(props) {
                     if(data.error || data.msg) {
                         alert("Vale e-mail või parool!");
                     } else if(data.token) {
-                        setToken(data.token);
+                        sessionStorage.setItem('token', data.token);
                         props.onLoginUser(1, data);
                         history.push("/home");
                     }
