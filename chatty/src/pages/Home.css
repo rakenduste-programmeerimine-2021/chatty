@@ -3,3 +3,8 @@
     right: 20px;
     top: 15px;
 }
+
+#content {
+    margin-top: 5vh;
+    text-align: center;
+}

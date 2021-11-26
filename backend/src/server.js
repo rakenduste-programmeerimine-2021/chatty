@@ -4,10 +4,12 @@ const PORT = process.env.PORT || 3000
 require("dotenv").config()
 
 const authRoutes = require('./routes/auth');
+const searchRoutes = require('./routes/search');
 
 const app = express()
 app.use(express.json());
 
+app.use('/api', searchRoutes);
 app.use('/api/auth', authRoutes);
 
 app.get('/', (req, res) => {

@@ -63,6 +63,7 @@ exports.signup = async (req, res) => {
     const newUser = new User({
       firstName,
       lastName,
+      bothNames : firstName + ' ' + lastName,
       email,
       password: hash
     })
