@@ -5,9 +5,9 @@ const jwtAuth = (req, res, next) => {
     if (!req.headers["authorization"]) throw Error("Access denied");
 
     // Authorization: Bearer token
-    const accesToken = req.headers.authorization.split(" ")[1]
+    const accessToken = req.headers.authorization.split(" ")[1]
 
-    const decoded = jwt.verify(accesToken, process.env.JWT_SECRET)
+    const decoded = jwt.verify(accessToken, process.env.JWT_SECRET)
     req.user = decoded
 
     next()

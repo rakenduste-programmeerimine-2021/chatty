@@ -20,6 +20,8 @@ router.post(
   authController.login
 );
 
+router.post("/verify", authController.verify);
+
 router.post(
   "/signup",
   [

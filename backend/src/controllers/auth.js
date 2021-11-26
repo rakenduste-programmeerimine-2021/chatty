@@ -28,8 +28,21 @@ exports.login = async (req, res) => {
       ...userTemplate
     })
 
-  } catch (e){
+  } catch (e) {
     res.status(400).json({ error: e.message })
+  }
+}
+
+exports.verify = async (req, res) => {
+  const token = req.body.token
+
+  try {
+    const isValid = jwt.verify(token, process.env.JWT_SECRET);
+    res.status(202).json({
+      isValid
+    })
+  } catch (e) {
+    res.status(406).json({ error: e.message })
   }
 }
 
