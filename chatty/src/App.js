@@ -4,6 +4,7 @@ import "antd/dist/antd.css";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Home from "./pages/Home";
+import Chat from "./pages/Chat";
 
 const { Content } = Layout;
 
@@ -16,6 +17,7 @@ function App() {
             <Route exact path="/" component={Login} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/home" component={Home} />
+            <Route exact path="/chat" component={Chat} />
           </Switch>
         </Content>
       </Layout>

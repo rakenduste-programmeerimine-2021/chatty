@@ -4,13 +4,15 @@ const PORT = process.env.PORT || 3000
 require("dotenv").config()
 
 const authRoutes = require('./routes/auth');
-const searchRoutes = require('./routes/search');
+const searchRoute = require('./routes/search');
+const chatRoutes = require('./routes/chat');
 
 const app = express()
 app.use(express.json());
 
-app.use('/api', searchRoutes);
+app.use('/api', searchRoute);
 app.use('/api/auth', authRoutes);
+app.use('/api/chat', chatRoutes);
 
 app.get('/', (req, res) => {
   res.send('Hello World!')

@@ -1,4 +1,4 @@
-import { Layout, Input } from "antd";
+import { Layout, Input, Form } from "antd";
 import { Content, Header } from "antd/lib/layout/layout";
 import { useHistory } from "react-router-dom";
 import { Button } from 'antd';
@@ -8,6 +8,7 @@ import './Home.css';
 function Home() {
 
     const [results, setResults] = useState([]);
+    const [loggedInFullName, setLoggedInFullName] = useState('');
     const { Search } = Input;
     const history = useHistory();
     const storageToken = sessionStorage.getItem('token');
@@ -26,6 +27,8 @@ function Home() {
             data => {
                 if(data.isValid === undefined) {
                     history.push("/");
+                } else {
+                    setLoggedInFullName(data.isValid.firstName + " " + data.isValid.lastName);
                 }
             }
         )
@@ -38,48 +41,85 @@ function Home() {
         history.push("/");
     }
 
-    function sendToChat(id) {
-        sessionStorage.setItem('chatID', id);
-        history.push("/chat")
+    function sendToChat(id, name) {
+        if(results[0]._id != 'X') {
+            sessionStorage.setItem('chatID', id);
+            sessionStorage.setItem('chatName', name);
+            history.push("/chat")
+        }
     }
 
     function onSearch(value) {
-
-        const valueData = {
-            bothNames: value
-        }
-
-        try {
-            fetch('http://localhost:8081/api/search', {
-                method: 'POST',
-                body: JSON.stringify(valueData),
-                headers: { 'Content-Type' : 'application/json' }
-            }).then(
-                response => response.json()
-            ).then(
-                data => {
-                    setResults(data.result);
-                }
-            )
-        } catch (error) {
-            alert(error);
+        if(value.searchField == " " || value.searchField == undefined) {
+            alert("Sisesta korrektne otsing!");
+        } else {
+            const valueData = {
+                bothNames: value.searchField
+            }
+    
+            try {
+                fetch('http://localhost:8081/api/search', {
+                    method: 'POST',
+                    body: JSON.stringify(valueData),
+                    headers: { 'Content-Type' : 'application/json' }
+                }).then(
+                    response => response.json()
+                ).then(
+                    data => {
+                        if(data.result.length == 0) {
+                            setResults([{
+                                _id: 'X',
+                                bothNames: 'Tulemusi ei leitud!'
+                            }])
+                        } else {
+                            setResults(data.result);
+                        }
+                    }
+                )
+            } catch (error) {
+                alert(error);
+            }
         }
     }
 
     return (
         <Layout>
             <Header>
+                <span style={{ color: "#FFFFFF", fontSize: "22px" }}>Tere, {loggedInFullName}!</span>
                 <Button type="danger" id="logoutButton" onClick={logOut}>Logi välja</Button>
             </Header>
             <Content id="content">
-                <Search id="search" placeholder="Otsi kasutajat" onSearch={onSearch} style={{ width: 200 }} />
-                <br /><br />
+                <Form
+                    name = "searchform"
+                    onFinish = {(values) => onSearch(values)}
+                >
+                    <Form.Item
+                        name = "searchField"
+                        required
+                    >
+                        <Input 
+                            placeholder = "Otsi kasutajat"
+                            style={{ width: 200 }}
+                        />
+                    </Form.Item>
+                    <Form.Item
+                        name = "searchButton"
+                    >
+                        <Button
+                            type = "primary"
+                            htmlType = "submit"
+                        >
+                            Otsi
+                        </Button>
+                    </Form.Item>
+                </Form>
+                <br />
                 <span>
                     {results.map((e) => (
                         <div key={e._id} id={e._id}>
                             <span
                                 style={{ cursor: "pointer", fontSize: "20px" }}
-                                onClick={() => sendToChat(e._id)}
+                                onClick={() => sendToChat(e._id, e.bothNames)}
                             >
                                 {e.bothNames}
                             </span>
