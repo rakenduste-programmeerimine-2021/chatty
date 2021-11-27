@@ -33,15 +33,22 @@ Avalehele minnes on võimalik kas uus kasutaja luua või olemasolevaga sisse log
 * NodeJS 16.13.0
 * ExpressJS 4.17.1
 * MongoDB 5.0
-* HTML5
 * CSS3
 
 ## Paigaldusjuhis (kuidas kasutada)
 
 1. Sobivas asukohas olles lae projekt alla  
 ```git clone https://github.com/rakenduste-programmeerimine-2021/chatty.git```
-2. Liigu ```dev``` kausta  
-```cd chatty/dev```
-3. Käivita Dockeri konteiner  
+2. Liigu ```backend``` kausta
+```cd chatty/backend```
+3. Lae alla vajalikud _package_'id
+```npm install```
+4. Liigu ```chatty``` kausta (frontend)
+```cd ../chatty```
+5. Lae alla vajalikud _package_'id
+```npm install```
+6. Liigu ```dev``` kausta
+```cd ../dev```
+7. Käivita Dockeri konteiner  
 ```docker-compose up```  
 Front-end on kättesaadav port 3000 pealt, back-end port 8081 pealt - ehk lokaalselt avalehele pääsemiseks http://localhost:3000/
