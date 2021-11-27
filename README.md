@@ -39,15 +39,15 @@ Avalehele minnes on võimalik kas uus kasutaja luua või olemasolevaga sisse log
 
 1. Sobivas asukohas olles lae projekt alla  
 ```git clone https://github.com/rakenduste-programmeerimine-2021/chatty.git```
-2. Liigu ```backend``` kausta
+2. Liigu ```backend``` kausta  
 ```cd chatty/backend```
-3. Lae alla vajalikud _package_'id
+3. Lae alla vajalikud _package_'id  
 ```npm install```
-4. Liigu ```chatty``` kausta (frontend)
+4. Liigu ```chatty``` kausta (frontend)  
 ```cd ../chatty```
-5. Lae alla vajalikud _package_'id
+5. Lae alla vajalikud _package_'id  
 ```npm install```
-6. Liigu ```dev``` kausta
+6. Liigu ```dev``` kausta  
 ```cd ../dev```
 7. Käivita Dockeri konteiner  
 ```docker-compose up```  
