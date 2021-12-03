@@ -29,6 +29,7 @@ function Home() {
                     history.push("/");
                 } else {
                     setLoggedInFullName(data.isValid.firstName + " " + data.isValid.lastName);
+                    sessionStorage.setItem('selfName', data.isValid.firstName + " " + data.isValid.lastName);
                 }
             }
         )
