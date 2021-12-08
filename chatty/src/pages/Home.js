@@ -9,7 +9,6 @@ function Home() {
 
     const [results, setResults] = useState([]);
     const [loggedInFullName, setLoggedInFullName] = useState('');
-    const { Search } = Input;
     const history = useHistory();
     const storageToken = sessionStorage.getItem('token');
     const tokenData = {
@@ -29,6 +28,7 @@ function Home() {
                     history.push("/");
                 } else {
                     setLoggedInFullName(data.isValid.firstName + " " + data.isValid.lastName);
+                    sessionStorage.setItem('selfName', data.isValid.firstName + " " + data.isValid.lastName);
                 }
             }
         )
@@ -42,7 +42,7 @@ function Home() {
     }
 
     function sendToChat(id, name) {
-        if(results[0]._id != 'X') {
+        if(results[0]._id !== 'X') {
             sessionStorage.setItem('chatID', id);
             sessionStorage.setItem('chatName', name);
             history.push("/chat")
@@ -50,7 +50,7 @@ function Home() {
     }
 
     function onSearch(value) {
-        if(value.searchField == " " || value.searchField == undefined) {
+        if(value.searchField === " " || value.searchField === undefined) {
             alert("Sisesta korrektne otsing!");
         } else {
             const valueData = {
@@ -66,7 +66,7 @@ function Home() {
                     response => response.json()
                 ).then(
                     data => {
-                        if(data.result.length == 0) {
+                        if(data.result.length === 0) {
                             setResults([{
                                 _id: 'X',
                                 bothNames: 'Tulemusi ei leitud!'
