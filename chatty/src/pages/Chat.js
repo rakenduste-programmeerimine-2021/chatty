@@ -7,11 +7,22 @@ import './Chat.css';
 
 function Chat() {
 
-    useEffect(receiveMessages, []);
-    //setInterval(useEffect(receiveMessages, []), 2000);
+    const [num, setNum] = useState(0);
+
+    useEffect(()=>{
+        setTimeout(() => {
+            receiveMessages(num)
+        }, 1000);
+    }, [num])
 
     const history = useHistory();
-    const [renderChats, setRenderChats] = useState([]);
+    const [renderChats, setRenderChats] = useState([{
+        createdAt: "rightNow",
+        id: "xxx",
+        message: "Laadin sõnumeid...",
+        sender: "loading"
+    }]);
+
     const [currentChat, changeCurrentChat] = useState('');
     const [chatName, setChatName] = useState('');
     const yourName = sessionStorage.getItem('selfName');
@@ -75,9 +86,9 @@ function Chat() {
         }
     }
 
-    function receiveMessages() {
-
-        console.log('received');
+    const receiveMessages = (number) => {
+        
+        setNum(number + 1);
 
         const senderID = sessionStorage.getItem('selfID');
         const receiverID = sessionStorage.getItem('chatID');
@@ -108,7 +119,8 @@ function Chat() {
                         chatData.push({
                             message: element.message,
                             sender: 'you',
-                            createdAt: element.createdAt
+                            createdAt: element.createdAt,
+                            id: element._id
                         });
                     });
 
@@ -117,7 +129,8 @@ function Chat() {
                         chatData.push({
                             message: element.message,
                             sender: 'other',
-                            createdAt: element.createdAt
+                            createdAt: element.createdAt,
+                            id: element._id
                         });
                     });
 
@@ -125,7 +138,7 @@ function Chat() {
 
                     chatDates.forEach(element1 => {
                         chatData.forEach(element2 => {
-                            if(element2.createdAt == element1) {
+                            if(element2.createdAt === element1) {
                                 chatsOrdered.push(element2);
                             }
                         });
@@ -151,7 +164,7 @@ function Chat() {
                         {renderChats.map((e) => {
                             if(e.sender === "you") {
                                 return  <>
-                                    <div key={e.createdAt} id={e.createdAt} style={{
+                                    <div key={e.id} id={e.id} style={{
                                         display: 'inline-block',
                                         border: '2px solid gray',
                                         borderRadius: '5px',
@@ -161,9 +174,20 @@ function Chat() {
                                             </div>
                                             <br />
                                         </>
+                            } else if(e.sender === "loading") {
+                                return  <>
+                                    <div key={e.id} id={e.id} style={{
+                                        display: 'inline-block',
+                                        border: '2px solid #d1a54d',
+                                        borderRadius: '5px',
+                                        padding: '5px' }}>
+                                                {e.message}
+                                            </div>
+                                            <br />
+                                        </>
                             } else {
                                 return  <>
-                                    <div key={e.createdAt} id={e.createdAt} style={{
+                                    <div key={e.id} id={e.id} style={{
                                         display: 'inline-block',
                                         border: '2px solid #d1a54d',
                                         borderRadius: '5px',
