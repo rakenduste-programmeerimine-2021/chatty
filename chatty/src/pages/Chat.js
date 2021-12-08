@@ -155,11 +155,11 @@ function Chat() {
     return (
         <Layout>
             <Header>
-                <span style={{ color: "#FFFFFF", fontSize: "22px" }}>Vestlus kasutajaga {chatName}</span>
+                <div style={{ color: "#FFFFFF", fontSize: "18px", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", marginRight: "12vw" }}>Vestlus kasutajaga {chatName}</div>
                 <Button type="danger" id="backButton" onClick={exitChat}>Tagasi</Button>
             </Header>
             <Content>
-                <div>
+                <div style={{ padding: "15px" }}>
                     <div style={{ width: "73%" }}>
                         {renderChats.map((e) => {
                             if(e.sender === "you") {
@@ -168,7 +168,8 @@ function Chat() {
                                         display: 'inline-block',
                                         border: '2px solid gray',
                                         borderRadius: '5px',
-                                        padding: '5px' }}>
+                                        padding: '5px',
+                                        marginTop: '10px' }}>
                                                 <b>{yourName}:</b><br />
                                                 {e.message}
                                             </div>
@@ -180,7 +181,8 @@ function Chat() {
                                         display: 'inline-block',
                                         border: '2px solid #d1a54d',
                                         borderRadius: '5px',
-                                        padding: '5px' }}>
+                                        padding: '5px',
+                                        marginTop: '10px' }}>
                                                 {e.message}
                                             </div>
                                             <br />
@@ -191,7 +193,8 @@ function Chat() {
                                         display: 'inline-block',
                                         border: '2px solid #d1a54d',
                                         borderRadius: '5px',
-                                        padding: '5px' }}>
+                                        padding: '5px',
+                                        marginTop: '10px' }}>
                                                 <b>{elseName}:</b><br />
                                                 {e.message}
                                             </div>
@@ -200,7 +203,7 @@ function Chat() {
                             }
                         })}
                     </div>
-                    <div className="site-input-group-wrapper">
+                    <div className="site-input-group-wrapper" style={{ marginTop: "15px" }}>
                         <Input.Group compact>
                             <Input style={{ width: '75%' }} placeholder="Sisesta sõnum" value={currentChat} onChange={handleChange} />
                             <Button type="primary" onClick={sendMessage}>Saada</Button>
