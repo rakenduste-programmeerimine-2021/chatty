@@ -85,7 +85,7 @@ function Home() {
     return (
         <Layout>
             <Header>
-                <span style={{ color: "#FFFFFF", fontSize: "22px" }}>Tere, {loggedInFullName}!</span>
+                <div style={{ color: "#FFFFFF", fontSize: "18px", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", marginRight: "19vw" }}>Tere, {loggedInFullName}!</div>
                 <Button type="danger" id="logoutButton" onClick={logOut}>Logi välja</Button>
             </Header>
             <Content id="content">
