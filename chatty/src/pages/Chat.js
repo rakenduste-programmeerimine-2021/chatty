@@ -152,6 +152,9 @@ function Chat() {
         }
     }
 
+    console.log(currentChat);
+    document.title = chatName + " - Chatty";
+
     return (
         <Layout>
             <Header>

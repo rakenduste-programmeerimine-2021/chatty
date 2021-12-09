@@ -6,6 +6,7 @@ import { useState } from 'react';
 import '../styles/Home.css';
 
 function Home() {
+    document.title = "Chatty - Avaleht";
 
     const [results, setResults] = useState([]);
     const [loggedInFullName, setLoggedInFullName] = useState('');
