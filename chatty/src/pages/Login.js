@@ -1,7 +1,7 @@
 import LoginForm from "../components/LoginForm";
 import React from 'react';
 import 'antd/dist/antd.css';
-import './Login.css';
+import '../styles/Login.css';
 import { loginUser } from "../store/actions";
 import { useHistory } from 'react-router-dom';
 

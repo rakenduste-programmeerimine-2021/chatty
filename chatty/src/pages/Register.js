@@ -1,6 +1,6 @@
 import { Form, Input, Button, Layout } from 'antd';
-import "./Register.css"
-import { Link, useHistory } from 'react-router-dom';
+import "../styles/Register.css"
+import { useHistory } from 'react-router-dom';
 
 function Register() {
 
@@ -60,61 +60,66 @@ function Register() {
         }
     }
 
+    function goBack() {
+        history.push("/");
+    }
+
+
     return (
         <Layout>
             <h1>Loo uus kasutaja</h1>
             <Form
-                labelCol = {{span: 8}}
-                wrapperCol = {{span: 8}}
-                name = "basic"
-                onFinish = {(values) => onFinish(values)}
+                labelCol={{ span: 8 }}
+                wrapperCol={{ span: 8 }}
+                name="basic"
+                onFinish={(values) => onFinish(values)}
             >
                 <Form.Item
-                    label = "E-maili aadress"
-                    name = "email"
+                    label="E-maili aadress"
+                    name="email"
                     required
                 >
                     <Input
-                        placeholder = "email@domain.com"
-                        type = "email"
+                        placeholder="email@domain.com"
+                        type="email"
                         required
                     />
                 </Form.Item>
                 <Form.Item
-                    label = "Eesnimi"
-                    name = "firstname"
+                    label="Eesnimi"
+                    name="firstname"
                     required
                 >
                     <Input
-                        placeholder = "Kalle"
-                        type = "text"
+                        placeholder="Kalle"
+                        type="text"
                         required
                     />
                 </Form.Item>
                 <Form.Item
-                    label = "Perenimi"
-                    name = "lastname"
+                    label="Perenimi"
+                    name="lastname"
                     required
                 >
                     <Input
-                        placeholder = "Kaalikas"
-                        type = "text"
+                        placeholder="Kaalikas"
+                        type="text"
                         required
                     />
                 </Form.Item>
                 <Form.Item
-                    label = "Parool"
-                    name = "password"
+                    label="Parool"
+                    name="password"
                     required
                 >
                     <Input
-                        type = "password"
+                        type="password"
                         required
                     />
                 </Form.Item>
                 <Form.Item
-                    label = "Kinnita parool"
-                    name = "confirmpassword"
+                    label="Kinnita parool"
+                    name="confirmpassword"
                 >
                     <Input
                         type="password"
@@ -125,7 +130,7 @@ function Register() {
                     <Button type="primary" htmlType="submit" className="formbutton">Registreeri</Button>
                 </Form.Item>
                 <Form.Item>
-                    <Button type="danger" className="formbutton"><Link to="/">Tagasi</Link></Button>
+                    <Button type="danger" className="formbutton"><span onClick={goBack}>Tagasi</span></Button>
                 </Form.Item>
             </Form>
         </Layout>

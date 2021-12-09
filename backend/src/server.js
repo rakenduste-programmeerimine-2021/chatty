@@ -1,8 +1,8 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const cors = require('cors')
-const PORT = process.env.PORT || 3000
 require("dotenv").config()
+const PORT = process.env.PORT || 3000
 
 const authRoutes = require('./routes/auth');
 const searchRoute = require('./routes/search');
@@ -37,3 +37,5 @@ mongoose
     console.log(err)
     process.exit(1)
   })
+
+module.exports = app;

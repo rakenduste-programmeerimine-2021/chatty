@@ -1,6 +1,6 @@
+import { useHistory } from "react-router-dom";
 import { Layout, Form, Input, Button } from 'antd';
-import { Link, useHistory } from "react-router-dom";
-import "./LoginForm.css";
+import "../styles/LoginForm.css";
 
 function LoginForm(props) {
 
@@ -11,20 +11,20 @@ function LoginForm(props) {
             fetch('http://localhost:8081/api/auth/login', {
                 method: 'POST',
                 body: JSON.stringify(values),
-                headers: { 'Content-Type' : 'application/json' }
+                headers: { 'Content-Type': 'application/json' }
             }).then(
                 response => response.json())
-            .then(
-                data => {
-                    if(data.error || data.msg) {
-                        alert("Vale e-mail või parool!");
-                    } else if(data.token) {
-                        sessionStorage.setItem('token', data.token);
-                        props.onLoginUser(1, data);
-                        history.push("/home");
-                    }
-                });
-        } catch(error) {
+                .then(
+                    data => {
+                        if (data.error || data.msg) {
+                            alert("Vale e-mail või parool!");
+                        } else if (data.token) {
+                            sessionStorage.setItem('token', data.token);
+                            props.onLoginUser(1, data);
+                            history.push("/home");
+                        }
+                    });
+        } catch (error) {
             alert(error);
         }
     };
@@ -34,35 +34,39 @@ function LoginForm(props) {
         props.onLoginUser(0);
     };
 
+    function goToRegister() {
+        history.push("/register");
+    }
+
     return (
         <Layout>
             <Form
-                labelCol = {{span: 8}}
-                wrapperCol = {{span: 8}}
-                name = "basic"
-                initialValues = {{ remember: true }}
-                onFinish = {onFinish}
-                onFinishFailed = {onFinishFailed}
-                autoComplete = "off"
+                labelCol={{ span: 8 }}
+                wrapperCol={{ span: 8 }}
+                name="basic"
+                initialValues={{ remember: true }}
+                onFinish={onFinish}
+                onFinishFailed={onFinishFailed}
+                autoComplete="off"
             >
                 <Form.Item
-                    label = "E-maili aadress"
-                    name = "email"
+                    label="E-maili aadress"
+                    name="email"
                     required
                 >
                     <Input
-                        placeholder = "email@domain.com"
-                        type = "email"
+                        placeholder="email@domain.com"
+                        type="email"
                         required
                     />
                 </Form.Item>
                 <Form.Item
-                    label = "Parool"
-                    name = "password"
+                    label="Parool"
+                    name="password"
                     required
                 >
                     <Input.Password
-                        type = "password"
+                        type="password"
                         required
                     />
                 </Form.Item>
@@ -72,7 +76,7 @@ function LoginForm(props) {
                     </Button>
                 </Form.Item>
                 <Form.Item>
-                    <Button type="primary" id="newAccount"><Link to="/register">Loo uus kasutaja</Link></Button>
+                    <Button type="primary" id="newAccount"><span onClick={goToRegister}>Loo uus kasutaja</span></Button>
                 </Form.Item>
             </Form>
         </Layout>
