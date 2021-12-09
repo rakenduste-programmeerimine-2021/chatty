@@ -3,7 +3,7 @@ import { Content, Header } from "antd/lib/layout/layout";
 import { useHistory } from "react-router-dom";
 import { Button } from 'antd';
 import { useState } from 'react';
-import './Home.css';
+import '../styles/Home.css';
 
 function Home() {
 

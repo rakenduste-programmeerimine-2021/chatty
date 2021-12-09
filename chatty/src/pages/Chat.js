@@ -3,7 +3,7 @@ import { Content, Header } from "antd/lib/layout/layout";
 import { useHistory } from "react-router-dom";
 import { Button } from 'antd';
 import { useEffect, useState } from 'react';
-import './Chat.css';
+import '../styles/Chat.css';
 
 function Chat() {
 
@@ -163,43 +163,43 @@ function Chat() {
                     <div style={{ width: "73%" }}>
                         {renderChats.map((e) => {
                             if(e.sender === "you") {
-                                return  <>
-                                    <div key={e.id} id={e.id} style={{
-                                        display: 'inline-block',
-                                        border: '2px solid gray',
-                                        borderRadius: '5px',
-                                        padding: '5px',
-                                        marginTop: '10px' }}>
-                                                <b>{yourName}:</b><br />
-                                                {e.message}
-                                            </div>
+                                return  <div key={e.id} id={e.id}>
+                                            <div style={{
+                                                display: 'inline-block',
+                                                border: '2px solid gray',
+                                                borderRadius: '5px',
+                                                padding: '5px',
+                                                marginTop: '10px' }}>
+                                                        <b>{yourName}:</b><br />
+                                                        {e.message}
+                                                </div>
                                             <br />
-                                        </>
+                                        </div>
                             } else if(e.sender === "loading") {
-                                return  <>
-                                    <div key={e.id} id={e.id} style={{
-                                        display: 'inline-block',
-                                        border: '2px solid #d1a54d',
-                                        borderRadius: '5px',
-                                        padding: '5px',
-                                        marginTop: '10px' }}>
-                                                {e.message}
-                                            </div>
+                                return  <div key={e.id} id={e.id}>
+                                            <div style={{
+                                                display: 'inline-block',
+                                                border: '2px solid #d1a54d',
+                                                borderRadius: '5px',
+                                                padding: '5px',
+                                                marginTop: '10px' }}>
+                                                        {e.message}
+                                                </div>
                                             <br />
-                                        </>
+                                        </div>
                             } else {
-                                return  <>
-                                    <div key={e.id} id={e.id} style={{
-                                        display: 'inline-block',
-                                        border: '2px solid #d1a54d',
-                                        borderRadius: '5px',
-                                        padding: '5px',
-                                        marginTop: '10px' }}>
-                                                <b>{elseName}:</b><br />
-                                                {e.message}
-                                            </div>
+                                return  <div key={e.id} id={e.id}>
+                                            <div style={{
+                                                display: 'inline-block',
+                                                border: '2px solid #d1a54d',
+                                                borderRadius: '5px',
+                                                padding: '5px',
+                                                marginTop: '10px' }}>
+                                                        <b>{elseName}:</b><br />
+                                                        {e.message}
+                                                </div>
                                             <br />
-                                        </>
+                                        </div>
                             }
                         })}
                     </div>
