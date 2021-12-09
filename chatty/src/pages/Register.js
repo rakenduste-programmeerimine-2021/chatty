@@ -3,6 +3,7 @@ import "../styles/Register.css"
 import { useHistory } from 'react-router-dom';
 
 function Register() {
+    document.title = "Chatty - Registreeru";
 
     const history = useHistory();
     const storageToken = sessionStorage.getItem('token');

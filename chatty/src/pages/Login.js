@@ -6,6 +6,8 @@ import { loginUser } from "../store/actions";
 import { useHistory } from 'react-router-dom';
 
 function Login() {
+    document.title = "Chatty - Logi sisse";
+
     const history = useHistory();
     const storageToken = sessionStorage.getItem('token');
     const tokenData = {
