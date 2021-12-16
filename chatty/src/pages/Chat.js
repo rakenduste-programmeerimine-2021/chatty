@@ -9,7 +9,7 @@ function Chat() {
 
     const [num, setNum] = useState(0);
 
-    useEffect(()=>{
+    useEffect(() => {
         setTimeout(() => {
             receiveMessages(num)
         }, 1000);
@@ -143,7 +143,6 @@ function Chat() {
                             }
                         });
                     });
-
                     setRenderChats(chatsOrdered);
                 }
             )
@@ -152,7 +151,6 @@ function Chat() {
         }
     }
 
-    console.log(currentChat);
     document.title = chatName + " - Chatty";
 
     return (
@@ -208,7 +206,7 @@ function Chat() {
                     </div>
                     <div className="site-input-group-wrapper" style={{ marginTop: "15px" }}>
                         <Input.Group compact>
-                            <Input style={{ width: '75%' }} placeholder="Sisesta sõnum" value={currentChat} onChange={handleChange} />
+                            <Input style={{ width: '75%' }} placeholder="Sisesta sõnum" value={currentChat} onChange={handleChange} onPressEnter={sendMessage} />
                             <Button type="primary" onClick={sendMessage}>Saada</Button>
                         </Input.Group>
                     </div>
