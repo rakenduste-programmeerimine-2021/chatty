@@ -30,9 +30,9 @@ describe('auth', () => {
   describe('/POST signup', () => {
     it('edukalt registreerumine ja sellekohase teate tagasi andmine', (done) => {
       let registerData = {
-        "firstName": "Margo",
-        "lastName": "Narõskin",
-        "email": "margoo@tlu.ee",
+        "firstName": "Backend",
+        "lastName": "Test",
+        "email": "npmtest@tlu.ee",
         "password": "a12345678B!"
       }
       chai.request(server)

@@ -5,7 +5,7 @@ require("dotenv").config()
 const PORT = process.env.PORT || 3000
 
 const authRoutes = require('./routes/auth');
-const searchRoute = require('./routes/search');
+const searchRoutes = require('./routes/search');
 const chatRoutes = require('./routes/chat');
 
 const app = express();
@@ -13,7 +13,7 @@ app.use(express.json());
 
 app.use(cors());
 
-app.use('/api', searchRoute);
+app.use('/api/search', searchRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/chat', chatRoutes);
 

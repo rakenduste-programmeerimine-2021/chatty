@@ -52,13 +52,13 @@ describe('searchUser', () => {
       });
   });
 
-  describe('/POST searchUsersByIDs', () => {
-      it('leidma id-de massiivi järgi kasutajate täisnimed ja tagastama ka need massiivina', (done) => {
+  describe('/POST searchUserByID', () => {
+      it('leidma id järgi kasutaja täisnime', (done) => {
         let searchQuery = {
-          IDs: ["61a95715afe9e40858a128d3", "61a95741afe9e40858a128d7"]
+          ID: "61a95715afe9e40858a128d3"
         }
         chai.request(server)
-            .post('/api/search/usersbyids')
+            .post('/api/search/userbyid')
             .type('json')
             .set('Content-Type', 'application/json')
             .send(searchQuery)
@@ -66,8 +66,7 @@ describe('searchUser', () => {
                 res.should.have.status(200);
                 res.body.should.be.a('object');
                 res.body.should.have.property('returnData');
-                res.body.returnData.should.be.a('array');
-                res.body.returnData.should.not.be.empty;
+                res.body.returnData.should.be.a('string');
               done();
             });
       });
