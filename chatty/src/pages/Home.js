@@ -223,7 +223,7 @@ function Home() {
                     </Form.Item>
                 </Form>
                 <span>
-                    <b style={{ fontSize: "20px" }}>Otsingutulemused</b>
+                    <b style={{ fontSize: "20px" }}>Tulemused</b>
                     {searchResults.map((e) => (
                         <div key={e._id} id={e._id} style={{ marginTop: "5px", fontSize: "18px" }}>
                             <span
